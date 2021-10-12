@@ -1,16 +1,36 @@
 import React from "react";
 
-function Food({fav}){
-  return <h1>I like {fav}</h1>
+function Food({name, picture}){
+  return <div>
+    <h2>I like {name}</h2>
+    <img src={picture} />
+  </div>
 }
+
+const foodILike=[
+  {
+    name:"Kimchi",
+    image:"https://miro.medium.com/max/1200/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg"
+  },
+  {
+    name:"Bibimbap",
+    image:"https://miro.medium.com/max/1200/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg"
+  },
+  {
+    name:"Samgyeopsal",
+    image:"https://miro.medium.com/max/1200/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg"
+  },
+  {
+    name:"Kimbap",
+    image:"https://miro.medium.com/max/1200/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg"
+  },
+]
 
 function App() {
   return (<div>
-      <h1>Hello!!!!!</h1>
-      <Food fav="kimchi" />
-      <Food fav="ramen" />
-      <Food fav="sangipsal" />
-      <Food fav="chukumi" />
+      {foodILike.map(dish => 
+      <Food name={dish.name} picture={dish.image}/>
+      )}
     </div>);
 }
 
