@@ -2,15 +2,25 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./Movie.css";
 
-function Movie({year,title,summary,poster}){
-    return <div class="movies__movie">
-        <img src={poster} alt={title} title={title}/>
-        <div class="movie__data">
-            <h3 class="movie__title">{title}</h3>
-            <h5 class="movie__year">{year}</h5>
-            <p class="movie__summary">{summary}</p>
+//표기가 같은 코드를 동시에 변경하고 싶으면 ctrl+shift+l을 하면 됩니다. 
+function Movie({year,title,summary,poster,genres}){
+    return (
+        <div className="movies__movie">
+            <img src={poster} alt={title} title={title}/>
+            <div className="movie__data">
+                <h3 className="movie__title">{title}</h3>
+                <h5 className="movie__year">{year}</h5>
+                <ul className="genres">
+                    {genres.map((genre,index)=>(
+                        <li key={index} className="genres__genre">
+                            {genre}
+                        </li>
+                    ))}
+                </ul>
+                <p className="movie__summary">{summary}</p>
+            </div>
         </div>
-    </div>;
+    );
 }
 
 Movie.propTypes={
@@ -18,7 +28,9 @@ Movie.propTypes={
     year:PropTypes.number.isRequired,
     title:PropTypes.string.isRequired,
     summary:PropTypes.string.isRequired,
-    poster:PropTypes.string.isRequired
+    poster:PropTypes.string.isRequired,
+    genres:PropTypes.arrayOf(PropTypes.string).isRequired,
+
 }
 
 export default Movie;
